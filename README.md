@@ -314,11 +314,23 @@ npm run clean            # Clean all build artifacts and node_modules
 
 ## Documentation
 
-- [Full Codebase Reference](docs/COMPLETE_CODEBASE.md) – Complete code listings and architecture
-- [Update Scenarios Playbook](docs/update-scenarios/README.md) – Where to place changes and patterns
-- [Update Workflow Checklist](docs/update-scenarios/UPDATE_WORKFLOW.md) – Step-by-step process for updates
-- [Commit History](docs/Commit.md) – Development progression and past changes
-- [Project TODOs](docs/TODO.md) – Active tasks and implementation roadmap
+**Getting Started:**
+- 📖 [Project Summary](./PROJECT_SUMMARY.md) – Complete project overview
+- 🚀 [Quick Start Guide](./QUICK_START.md) – Get up and running in minutes
+- 🔧 [Setup Guide](./SETUP_GUIDE.md) – Comprehensive development setup
+- 📋 [Features](./FEATURES.md) – Detailed feature documentation
+
+**Deployment:**
+- 🌐 [Production Deployment](./PRODUCTION_DEPLOY.md) – Deploy to production
+- 🍎 [Apple Platforms](./DEPLOYMENT.md) – iOS/iPadOS/macOS deployment
+
+**Architecture:**
+- 🏗️ [Architecture Overview](./ARCHITECTURE.md) – Combined approach structure
+- 📦 [Package Documentation](./packages/) – Individual package READMEs
+
+**Contributing:**
+- 🤝 [Contributing Guide](./CONTRIBUTING.md) – How to contribute
+- 📝 [Commit Guidelines](./docs/Commit.md) – Development history
 
 ---
 
