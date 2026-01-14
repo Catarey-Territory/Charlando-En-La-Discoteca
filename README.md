@@ -83,7 +83,7 @@ Charlando-En-La-Discoteca/
 
 ---
 
-## Technology Stack
+# The Chatroom
 
 - **Backend:** NestJS, Node.js, Express (legacy), Socket.IO
 - **Mobile:** React Native, Expo
@@ -94,7 +94,7 @@ Charlando-En-La-Discoteca/
 - **Location Services:** Geolocation API
 - **UI:** Tailwind CSS, React Native Paper, Lucide icons
 
----
+This repository contains the source code for The Chatroom, which powers the chatrooms for Charlando En La Discotec.
 
 ## Project Structure
 
@@ -190,79 +190,26 @@ npm run prisma:migrate
 
 ### 4. Run Development Servers
 
-### Option A: All-in-One Script (Recommended)
 
-```bash
-# Run all services
-npm run dev
-
-# Or run individually:
-npm run dev:api      # API server (http://localhost:3001)
-npm run dev:socket   # Socket.IO (http://localhost:3002)
-npm run dev:web      # Next.js (http://localhost:3000)
-```
-
-### Option C: Standalone Single-File App
-
-```bash
-node app-standalone.js
-```
-
-## 5. Access Application
-
-- **Frontend:** <http://localhost:3000>
-- **API:** <http://localhost:3001>
-- **WebSocket:** <http://localhost:3002>
+For all project documentation, guides, technical details, and reference, see the [`Chatroom-Details/`](Chatroom-Details/) folder and its `INDEX.md`.
 
 ---
 
-### Health Checks
+## Quick Start
 
-Quickly verify the services are healthy and connected.
+1. Install dependencies:
 
-```bash
-# API health (expects a JSON response with status: ok)
-curl -s http://localhost:3001/health
-```
+   ```bash
+   npm install
+   ```
 
-From the browser console on the frontend (<http://localhost:3000>):
+2. Set up environment variables (see `.env.example` and `docs/`)
+3. Set up the database:
 
-```js
-(() => {
-  const s = io('http://localhost:3002', { transports: ['websocket'] });
-  s.on('connect', () => console.log('socket connected:', s.id));
-  s.on('chat message', (m) => console.log('message:', m));
-  s.emit('chat message', 'hello from UI');
-})();
-```
-
----
-
-## Environment Variables
-
-```bash
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/chatroom"
-
-# JWT Secrets
-ACCESS_TOKEN_SECRET="your-access-secret"
-REFRESH_TOKEN_SECRET="your-refresh-secret"
-
-# Encryption
-PHONE_ENC_KEY="32-byte-encryption-key"
-ENCRYPTION_KEY="fallback-key"
-
-# Twilio (optional)
-TWILIO_ACCOUNT_SID="optional"
-TWILIO_AUTH_TOKEN="optional"
-TWILIO_FROM_NUMBER="+1234567890"
-
-# Server Configuration
-PORT=3001
-SOCKET_PORT=3002
-FRONTEND_URL="http://localhost:3000"
-NODE_ENV="development"
-```
+   ```bash
+   npm run prisma:generate
+   npm run prisma:migrate
+   ```
 
 ## NPM Scripts
 
@@ -392,25 +339,24 @@ See the full schema in [prisma/schema.prisma](prisma/schema.prisma) and detailed
 
 ---
 
-## Development Setup
+   ```bash
+   npm run dev
+   # or run each service individually
+   npm run dev:api
+   npm run dev:socket
+   npm run dev:web
+   ```
 
-- **VS Code Extensions:** Prisma, ESLint, Prettier, Tailwind CSS IntelliSense
-- **Debugging API:** `npm run dev:debug` to start Node with `--inspect` flag
-- **Code Formatting:** Configure Prettier; TypeScript `strict` is disabled for development
-- **Path Aliases:** `@/*` (root), `@/components/*`, `@/lib/*`, `@/utils/*`
+5. Access the app at http://localhost:3000
 
 ---
 
-## Contributing
+## More Information
 
-- **Branches:** Use feature branches like `feat/short-description`
-- **Commits:** Follow [Conventional Commits](https://www.conventionalcommits.org/) (e.g., `feat: add lounge filter`)
-- **Tests:** Add tests where feasible; keep changes focused and minimal
-- **Breaking Changes:** Discuss via issue before submitting PR
-- **Guidelines:** See [CONTRIBUTING.md](CONTRIBUTING.md) for full details
+- See [`Chatroom-Details/INDEX.md`](Chatroom-Details/INDEX.md) for a categorized list of all documentation, guides, onboarding, reference, and integration notes
 
 ---
 
 ## License
 
-- MIT License. See [LICENSE](LICENSE) for the full text.
+MIT License. See [LICENSE](LICENSE) for details.

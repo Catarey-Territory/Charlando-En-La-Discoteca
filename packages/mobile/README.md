@@ -36,10 +36,43 @@ npm run ios
 - TypeScript
 - Shared types from @charlando/shared
 
-## Environment Variables
+---
 
-Create `.env` file:
-```
+## Charlando En La Discoteca - Environment Variables
+
+---
+
+## Backend / Server
+
+## Server listening port
+PORT=3001
+
+## Environment: development / production
+NODE_ENV=development
+
+## URL of the frontend for CORS / allowed origins
+FRONTEND_URL=http://localhost:3000
+
+## JWT secret for ephemeral session authentication
+JWT_SECRET=your-secret-key
+
+# PostgreSQL database connection URL
+DATABASE_URL=postgres://user:password@localhost:5432/charlando
+
+# Redis connection URL for caching / WebSocket scaling
+REDIS_URL=redis://localhost:6379
+
+# Ephemeral session lifetime in seconds (default 24h)
+SESSION_TTL=86400
+
+# Ephemeral message lifetime in seconds (default 2h)
+MESSAGE_TTL=7200
+
+---
+
+# API / WebSocket
+
+# Base API URL (backend endpoint)
 API_URL=http://localhost:3001
 SOCKET_URL=http://localhost:3001
 ```
