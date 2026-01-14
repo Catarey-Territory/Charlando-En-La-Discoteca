@@ -16,14 +16,16 @@ Charlando En La Discoteca is a privacy-first, temporary messaging platform desig
 
 ### 1. Ephemeral Identity System
 
-#### Current Implementation
+#### Implementation Details
+
 - ✅ **Anonymous Sessions**: Users connect without creating accounts
 - ✅ **Temporary Usernames**: Auto-generated usernames (e.g., `guest_abc123`)
 - ✅ **Auto-Expiring Sessions**: 24-hour session lifetime
 - ✅ **JWT Authentication**: Secure, stateless authentication
 - ✅ **Session Cleanup**: Automated removal of expired sessions
 
-#### Technical Details
+#### Technical Details: Ephemeral Identity
+
 ```typescript
 // Session Creation
 POST /auth/ephemeral
@@ -36,6 +38,7 @@ Response: {
 ```
 
 #### Privacy Benefits
+
 - No email or phone required
 - No password storage
 - No tracking across sessions
@@ -43,15 +46,17 @@ Response: {
 
 ### 2. Location-Based Venue Discovery
 
-#### Current Implementation
+#### Location Implementation
+
 - ✅ **Geolocation API**: Find venues near user's location
 - ✅ **Radius Search**: Customizable search radius (default 5km)
 - ✅ **Venue Types**: Nightclub, festival, convention, bar, other
 - ✅ **Real-Time Active Users**: See current venue population
 
-#### Technical Details
+### Technical Details: Venue Discovery
+
 ```typescript
-// Find Nearby Venues
+// Venue Discovery Example
 GET /venues/nearby?lat=40.7128&lng=-74.0060&radius=5
 Response: [
   {
@@ -67,7 +72,8 @@ Response: [
 ]
 ```
 
-#### Planned Enhancements
+#### Upcoming Enhancements
+
 - 🚧 PostGIS integration for efficient geo-queries
 - 🚧 Venue hours/schedule
 - 🚧 Event-based temporary venues
@@ -75,7 +81,8 @@ Response: [
 
 ### 3. Real-Time Chat System
 
-#### Current Implementation
+#### Mobile App Implementation
+
 - ✅ **WebSocket Gateway**: Socket.IO for instant messaging
 - ✅ **Venue-Based Rooms**: Separate chat per venue
 - ✅ **Message Broadcasting**: Instant delivery to all users in venue
@@ -83,6 +90,7 @@ Response: [
 - ✅ **User Presence**: Join/leave notifications
 
 #### Technical Details
+
 ```typescript
 // WebSocket Events
 socket.emit('join_venue', { venueId: 'venue-123' });
@@ -96,12 +104,14 @@ socket.on('user_typing', { username, isTyping });
 ```
 
 #### Message Constraints
+
 - Max length: 500 characters
 - No file attachments (for privacy)
 - Text-only messages
 - Real-time moderation ready
 
-#### Planned Enhancements
+#### Upcoming Features
+
 - 🚧 Message reactions/emoji
 - 🚧 Reply threads
 - 🚧 User mentions
@@ -109,7 +119,8 @@ socket.on('user_typing', { username, isTyping });
 
 ### 4. Privacy & Data Management
 
-#### Current Implementation
+#### Message Retention Implementation
+
 - ✅ **Limited Message History**: Only last 2 hours visible
 - ✅ **Auto-Delete Messages**: 24-hour message retention
 - ✅ **Session Cleanup**: Hourly cron job removes expired sessions
@@ -117,6 +128,7 @@ socket.on('user_typing', { username, isTyping });
 - ✅ **Minimal Metadata**: Only essential data stored
 
 #### Data Retention Policy
+
 ```typescript
 // Message Lifecycle
 1. Message created → stored in database
@@ -126,13 +138,15 @@ socket.on('user_typing', { username, isTyping });
 ```
 
 #### Privacy Features
+
 - No IP address retention (beyond session creation)
 - No device fingerprinting
 - No cross-session tracking
 - No user profiles or history
 - No message search or indexing
 
-#### Planned Enhancements
+#### Upcoming Privacy Enhancements
+
 - 🚧 End-to-end encryption (optional)
 - 🚧 Self-destructing messages
 - 🚧 Venue-close message deletion
@@ -140,7 +154,8 @@ socket.on('user_typing', { username, isTyping });
 
 ### 5. Mobile Application (React Native)
 
-#### Current Implementation
+#### Mobile App Features
+
 - ✅ **Cross-Platform**: iOS and Android support
 - ✅ **Expo Framework**: Easy development and deployment
 - ✅ **Native Navigation**: React Navigation
@@ -148,12 +163,14 @@ socket.on('user_typing', { username, isTyping });
 - ✅ **Shared Types**: Type safety with @charlando/shared
 
 #### Key Screens
+
 1. **Home Screen**: Welcome and session creation
 2. **Venue List**: Nearby venues with filters
 3. **Chat Screen**: Real-time venue chat
 4. **Profile**: Minimal session info
 
-#### Planned Enhancements
+#### Upcoming Web App Enhancements
+
 - 🚧 Push notifications
 - 🚧 Background location updates
 - 🚧 Offline mode
@@ -162,19 +179,22 @@ socket.on('user_typing', { username, isTyping });
 
 ### 6. Web Application (Next.js)
 
-#### Current Implementation
+#### Web App Implementation
+
 - ✅ **Next.js 14**: Modern React framework
 - ✅ **Server Components**: Optimal performance
 - ✅ **Tailwind CSS**: Responsive design
 - ✅ **Socket.IO Client**: Real-time features
 
 #### Use Cases
+
 - Desktop browsing
 - Mobile web fallback
 - Venue owner dashboards (planned)
 - Admin interface (planned)
 
-#### Planned Enhancements
+#### Upcoming Web App Features
+
 - 🚧 Progressive Web App (PWA)
 - 🚧 Venue management dashboard
 - 🚧 Analytics interface
@@ -183,6 +203,7 @@ socket.on('user_typing', { username, isTyping });
 ### 7. Backend Architecture (NestJS)
 
 #### Current Implementation
+
 - ✅ **Modular Design**: Separate modules for auth, venues, chat
 - ✅ **Dependency Injection**: Clean architecture
 - ✅ **Prisma ORM**: Type-safe database access
@@ -190,8 +211,8 @@ socket.on('user_typing', { username, isTyping });
 - ✅ **JWT Authentication**: Stateless auth
 
 #### Module Structure
-```
-src/
+
+```src/
 ├── auth/          # Authentication & sessions
 ├── venues/        # Location-based venues
 ├── chat/          # Message handling
@@ -201,6 +222,7 @@ src/
 ```
 
 #### Planned Enhancements
+
 - 🚧 Rate limiting per user
 - 🚧 Redis caching
 - 🚧 Message queue (Bull)
@@ -209,6 +231,7 @@ src/
 ### 8. Database Schema (PostgreSQL + Prisma)
 
 #### Core Models
+
 - **TempSession**: Ephemeral user sessions
 - **Lounge**: Venue/location data
 - **ChatMessage**: Chat messages (ephemeral)
@@ -216,6 +239,7 @@ src/
 - **ModerationAction**: Content moderation logs
 
 #### Privacy Considerations
+
 - Minimal foreign keys
 - No user profiles
 - Automatic cascade deletes
@@ -224,23 +248,27 @@ src/
 ## Security Features
 
 ### 1. Authentication & Authorization
+
 - JWT-based authentication
 - Short-lived tokens (15 minutes)
 - No refresh tokens (by design)
 - Session validation on every request
 
 ### 2. Input Validation
+
 - Class-validator decorators
 - Max message length
 - Content sanitization
 - XSS prevention
 
 ### 3. Rate Limiting
+
 - Per-IP rate limiting (planned)
 - Per-session rate limiting (planned)
 - WebSocket connection limits
 
 ### 4. Data Protection
+
 - Encrypted database connections
 - HTTPS in production
 - Secure cookie settings
@@ -249,38 +277,44 @@ src/
 ## Scalability Considerations
 
 ### Current Architecture
+
 - Single NestJS server
 - PostgreSQL database
 - Socket.IO with memory adapter
 
 ### Planned Improvements
+
 - 🚧 Redis for Socket.IO adapter (multi-server)
 - 🚧 Database read replicas
 - 🚧 CDN for static assets
 - 🚧 Load balancing
 - 🚧 Horizontal scaling
 
-## Use Cases
+## Example Use Cases
 
 ### 1. Nightclub/Bar
+
 - Venue creates a temporary chatroom
 - Patrons join via location
 - Chat active only during operating hours
 - Messages deleted at closing time
 
 ### 2. Music Festival
+
 - Multiple stage-specific chatrooms
 - Temporary festival duration
 - High concurrent users
 - Auto-delete after festival ends
 
 ### 3. Convention/Conference
+
 - Event-specific chatrooms
 - Workshop/session discussions
 - Networking without contact sharing
 - Clean slate after event
 
 ### 4. Pop-Up Events
+
 - Short-lived venues
 - Flash mob coordination
 - Temporary communities
@@ -289,23 +323,27 @@ src/
 ## Future Vision
 
 ### Phase 1 (Current)
+
 - ✅ Basic ephemeral messaging
 - ✅ Location-based venues
 - ✅ Mobile and web apps
 
 ### Phase 2 (Next 3 months)
+
 - 🚧 Enhanced geolocation
 - 🚧 Push notifications
 - 🚧 Venue owner dashboards
 - 🚧 Advanced moderation
 
 ### Phase 3 (6-12 months)
+
 - 🚧 End-to-end encryption
 - 🚧 Multi-language support
 - 🚧 Event integration
 - 🚧 Analytics platform
 
 ### Phase 4 (Future)
+
 - 🚧 Monetization (venue features)
 - 🚧 API for third parties
 - 🚧 White-label solutions
@@ -314,12 +352,14 @@ src/
 ## Technical Requirements
 
 ### Development
+
 - Node.js 18+
 - PostgreSQL 14+
 - iOS Simulator / Android Studio
 - Modern web browser
 
 ### Production
+
 - Cloud hosting (AWS/GCP/Azure)
 - Managed PostgreSQL
 - CDN for static assets
@@ -327,6 +367,7 @@ src/
 - Domain name
 
 ### Optional Services
+
 - Redis for caching
 - Message queue (RabbitMQ/Bull)
 - Monitoring (Sentry, Datadog)
@@ -335,18 +376,21 @@ src/
 ## Compliance & Legal
 
 ### Privacy Compliance
+
 - GDPR-ready architecture
 - Minimal data collection
 - Right to deletion (automatic)
 - No cross-border data transfer
 
 ### Content Moderation
+
 - User reporting system (planned)
 - Keyword filtering (planned)
 - Automated moderation (planned)
 - Human review process (planned)
 
 ### Terms of Service
+
 - Age verification (18+)
 - Content guidelines
 - User conduct rules
@@ -360,5 +404,5 @@ The platform is designed to scale from small venues to large festivals while mai
 
 ---
 
-**Last Updated**: January 2026
+**Last Updated**: January 2026  
 **Version**: 0.1.0 (Early Stage)
