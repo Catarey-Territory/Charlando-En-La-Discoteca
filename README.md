@@ -1,17 +1,16 @@
 
 # The Chatroom
 
+
 This repository contains the source code for The Chatroom, which powers the chatrooms for Charlando En La Discotec.
 
 ## Project Structure
 
 - Source code: see `api/`, `socket/`, `web/`, `shared/`, and `packages/` folders
-- Documentation, guides, and reference: see `docs/`, `guides/`, `reference/`, and `info/`
-- Scripts and utilities: see `scripts/`
-- Legacy and old files: see `legacy/`, `old_docs/`, `old_guides/`, `old_info/`, `old_scripts/`
-- External and integration info: see `external/`, `info/`
+- **All documentation, guides, reference, legacy, scripts, and integration info are now consolidated in [`Chatroom-Details/`](Chatroom-Details/)**
 
-For full documentation, guides, and technical details, see the `docs/` folder and its `INDEX.md`.
+
+For all project documentation, guides, technical details, and reference, see the [`Chatroom-Details/`](Chatroom-Details/) folder and its `INDEX.md`.
 
 ---
 
@@ -47,10 +46,7 @@ For full documentation, guides, and technical details, see the `docs/` folder an
 
 ## More Information
 
-- See `docs/INDEX.md` for a categorized list of documentation and guides
-- See `guides/` for onboarding and how-tos
-- See `reference/` for schemas and technical standards
-- See `info/` for integration notes and external references
+- See [`Chatroom-Details/INDEX.md`](Chatroom-Details/INDEX.md) for a categorized list of all documentation, guides, onboarding, reference, and integration notes
 
 ---
 
